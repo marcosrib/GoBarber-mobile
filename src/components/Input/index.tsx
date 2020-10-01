@@ -37,10 +37,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, []);
 
   const handleIpuntBlur = useCallback(() => {
-    console.log('blur');
-
     setIsFocused(false);
-
     setIsFilled(!!inputValueRef.current.value);
   }, []);
 
@@ -67,7 +64,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, [fieldName, registerField]);
 
   return (
-    <Container isFocused={isFocused}>
+    <Container isFocused={isFocused} isErrored={!!error}>
       <Icon name={icon} size={20} color={isFocused || isFilled ? '#ff9000' : '#666360'} />
       <TextInput
         ref={inputElemenRef}
