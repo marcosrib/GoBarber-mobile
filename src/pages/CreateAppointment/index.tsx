@@ -1,6 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/Feather';
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 import api from '../../services/api';
 import { useAuth } from '../../hooks/Auth';
 
@@ -15,6 +17,10 @@ import {
   ProviderContainer,
   ProviderAvatar,
   ProviderName,
+  Calendar,
+  Title,
+  OpenDatePickerButton,
+  OpenDatePickerButtonText,
 } from './styles';
 
 interface RouteProps {
@@ -33,6 +39,8 @@ const CreateAppointment: React.FC = () => {
   const routeParams = route.params as RouteProps;
   const [providers, setProviders] = useState<Provider[]>([]);
   const [selectedProvider, setSelectedProvider] = useState(routeParams.providerId);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
     api.get('providers').then((response) => {
@@ -48,6 +56,17 @@ const CreateAppointment: React.FC = () => {
     setSelectedProvider(providerId);
   }, []);
 
+  const handleToggleDatePicker = useCallback(() => {
+    setShowDatePicker((state) => !state);
+  }, []);
+
+  const handleDateChanged = useCallback((event: any, date: Date | undefined) => {
+    setShowDatePicker(false);
+
+    if (date) {
+      setSelectedDate(date);
+    }
+  }, []);
   return (
     <Container>
       <Header>
@@ -74,6 +93,21 @@ const CreateAppointment: React.FC = () => {
           )}
         />
       </ProvidersListContainer>
+      <Calendar>
+        <Title>Escolha a data</Title>
+
+        <OpenDatePickerButton onPress={handleToggleDatePicker}>
+          <OpenDatePickerButtonText>Selecionar data</OpenDatePickerButtonText>
+        </OpenDatePickerButton>
+        { showDatePicker && (
+        <DateTimePicker
+          value={selectedDate}
+          onChange={handleDateChanged}
+          mode="date"
+          display="calendar"
+        />
+        )}
+      </Calendar>
     </Container>
   );
 };
