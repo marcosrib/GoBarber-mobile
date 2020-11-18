@@ -5,6 +5,7 @@ import React, {
 import Icon from 'react-native-vector-icons/Feather';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { format } from 'date-fns';
+import { Alert } from 'react-native';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/Auth';
 
@@ -29,7 +30,8 @@ import {
   SectionContent,
   Hour,
   HourText,
-
+  CreateAppointmentButton,
+  CreateAppointmentButtonText,
 } from './styles';
 
 interface RouteProps {
@@ -49,7 +51,7 @@ export interface AvailabilityItem {
 const CreateAppointment: React.FC = () => {
   const { user, signOut } = useAuth();
   const route = useRoute();
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
   const routeParams = route.params as RouteProps;
 
   const [availability, setAvailability] = useState<AvailabilityItem[]>([]);
@@ -98,6 +100,29 @@ const CreateAppointment: React.FC = () => {
       setSelectedDate(date);
     }
   }, []);
+
+  const handleCreateAppointment = useCallback(async () => {
+    try {
+      const date = new Date(selectedDate);
+      date.setHours(selectedHour);
+      date.setMinutes(0);
+
+      await api.post('appointments', {
+        provider_id: selectedProvider,
+        date,
+      });
+      console.log('lmll');
+
+      navigate('AppointmentCreated', {
+        date: date.getTime(),
+      });
+    } catch (error) {
+      Alert.alert(
+        'Erro ao criar agendamento',
+        'Ocorreu um erro ao tentar criar o agendamento, tente novamente',
+      );
+    }
+  }, [selectedDate, selectedProvider, selectedHour, navigate]);
 
   const handleSelectorHour = useCallback((hour: number) => {
     setSelectedHour(hour);
@@ -199,7 +224,9 @@ const CreateAppointment: React.FC = () => {
           </SectionContent>
         </Section>
       </Schedule>
-
+      <CreateAppointmentButton onPress={handleCreateAppointment}>
+        <CreateAppointmentButtonText>Agendar</CreateAppointmentButtonText>
+      </CreateAppointmentButton>
     </Container>
   );
 };

@@ -26,6 +26,7 @@
         "react-hooks"
     ],
     "rules": {
+        "import/no-duplicates": "off",
         "camelcase":"off",
         "no-unused-expressions":"off",
         "react/prop-types":"off",
