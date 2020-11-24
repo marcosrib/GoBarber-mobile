@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-
-import Icon from 'react-native-vector-icons/Feather';
+import ImageEditor from '@react-native-community/image-editor';
+import ImagePicker from 'react-native-image-picker';
 import React, { useCallback, useRef } from 'react';
 import {
-  Alert, Image, KeyboardAvoidingView, Platform, View, TextInput,
+  Alert, KeyboardAvoidingView, Platform, View, TextInput,
 } from 'react-native';
 
 import { Form } from '@unform/mobile';
@@ -103,9 +103,42 @@ const Profile: React.FC = () => {
         );
       }
     },
-    [navigation],
+    [navigation, updateUser],
   );
 
+  const handleUpdateAvatar = useCallback(() => {
+    ImagePicker.showImagePicker({
+      title: 'Selecione um avatar',
+      cancelButtonTitle: 'Cancelar',
+      takePhotoButtonTitle: 'Usar câmera',
+      chooseFromLibraryButtonTitle: 'Ecolha da galeria',
+      maxWidth: 400,
+      maxHeight: 400,
+    }, (response) => {
+      if (response.didCancel) {
+        return;
+      }
+
+      if (response.error) {
+        console.log('Erro ao atualizar seu avatar: ', response.error);
+        return;
+      }
+
+      if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+
+      const data = new FormData();
+      data.append('avatar', {
+        type: 'image/jpeg',
+        name: `${user.id}.jpg`,
+        uri: response.uri,
+      });
+      api.patch('users/avatar', data).then((resp) => {
+        updateUser(resp.data);
+      });
+    });
+  }, [updateUser, user.id]);
   return (
     <>
       <KeyboardAvoidingView
@@ -114,7 +147,7 @@ const Profile: React.FC = () => {
         enabled
       >
         <Container>
-          <UserAvataButton>
+          <UserAvataButton onPress={handleUpdateAvatar}>
             <UserAvatar source={{ uri: user.avatar_url }} />
           </UserAvataButton>
           <View>
