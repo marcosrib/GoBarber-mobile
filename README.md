@@ -13,7 +13,7 @@ Projeto desenvolvido no Gostack da Rocketseat com react-native.
 
  Propósito de criação:
 
-- Realizar agendamentos dos clientes.
+- Agendamento de horário para cortes de cabelo masculino dos clientes.
 - Cadastro de clientes e prestadores de serviços (Barbearias).
 - Edição de Perfil.
 
@@ -22,7 +22,7 @@ Link backend: [clique aqui](https://github.com/marcosrib/gobarber-backend).
 
 ## :camera: Preview:
 
-### Tela de cabeleireiros cadastrados:
+### Tela cabeleireiros cadastrados:
 <img src="https://user-images.githubusercontent.com/43934564/102002187-dccda800-3cd8-11eb-95b7-e2ad24e33ca5.jpg " width="300" height="500" />
 
 ### Tela login:
