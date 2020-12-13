@@ -38,7 +38,7 @@ Link backend: [clique aqui](https://github.com/marcosrib/gobarber-backend).
 ## :gear: Funcionalidades:
 
 - [X] Efetuar logon.
-- [X] Castrar usuário e prestadores.
+- [X] Cadastrar usuário e prestadores.
 - [X] Realizar agendamento.
 - [X] Editar perfil.
 ## :file_folder: Bibliotecas utilizadas:
