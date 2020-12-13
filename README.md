@@ -9,7 +9,13 @@
 
 ## :memo: Descrição do projeto:
 
-Este projeto que foi desenvolvido no GoStack da Rocketseat com Reactjs, com o propósito de realizar agendamentos dos clientes nas barbearias, cadastro dos cliente e prestadores de serviços(Barbearias) e edição de perfil.
+Projeto desenvolvido no Gostack da Rocketseat com react-native.
+
+ Propósito de criação:
+
+- Realizar agendamentos dos clientes.
+- Cadastro de clientes e prestadores de serviços (Barbearias).
+- Edição de Perfil.
 
 Está aplicação irá conectar com o backend desenvolvido em nodejs.
 Link backend: [clique aqui](https://github.com/marcosrib/gobarber-backend).
