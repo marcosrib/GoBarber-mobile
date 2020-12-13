@@ -17,7 +17,7 @@ Link backend: [clique aqui](https://github.com/marcosrib/gobarber-backend).
 ## :camera: Preview:
 
 ### Tela de cabeleireiros cadastrados:
-<img src="https://user-images.githubusercontent.com/43934564/102002187-dccda800-3cd8-11eb-95b7-e2ad24e33ca5.jpg " width="200" height="400" />
+<img src="https://user-images.githubusercontent.com/43934564/102002187-dccda800-3cd8-11eb-95b7-e2ad24e33ca5.jpg " width="300" height="400" />
 
 ### Tela login:![Screenshot_2020-12-12-23-45-37-928_com appgobarber](https://user-images.githubusercontent.com/43934564/102002188-dd663e80-3cd8-11eb-93b7-795e3c88bda2.jpg)
 ### Tela criar conta:![Screenshot_2020-12-13-00-00-53-106_com appgobarber](https://user-images.githubusercontent.com/43934564/102002189-ddfed500-3cd8-11eb-9cbb-2b05a5f0a20d.jpg)
