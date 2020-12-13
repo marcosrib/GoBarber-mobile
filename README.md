@@ -45,21 +45,19 @@ Link backend: [clique aqui](https://github.com/marcosrib/gobarber-backend).
 - axios.
 - polished.
 - unform.
-- react-icons.
-- react-spring.
-- react-router-dom.
+- datetimepicker.
+- react-native-image-picker.
+- react-native-iphone-x-helper.
 - styled-components.
-- uuidv4.
 - yup.
 - eslint
 - prettier
 - date-fns
-- react-day-picker
-- jest
+- react-native-vector-icons.
 ## :arrow_forward: Como executar:
 No terminal clone o projeto.
 ```
-git clone https://github.com/marcosrib/GoBarber-web.git
+git clone https://github.com/marcosrib/GoBarber-mobile.git
 ```
 Entre na pasta do projeto e instale as dependências executando.
 ```
@@ -69,4 +67,6 @@ Para rodar o projeto execute.
 
 ```
 yarn start
+
+yarn android ou npx react-native run-android
 ```
