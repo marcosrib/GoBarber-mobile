@@ -13,7 +13,7 @@ Projeto desenvolvido no Gostack da Rocketseat com react-native.
 
  Propósito de criação:
 
-- Agendamento de horário para cortes de cabelo masculino dos clientes.
+- Agendamento de horário.
 - Cadastro de clientes e prestadores de serviços (Barbearias).
 - Edição de Perfil.
 
